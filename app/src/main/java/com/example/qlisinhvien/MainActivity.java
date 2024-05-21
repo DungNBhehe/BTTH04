@@ -64,7 +64,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String malop = edtmalop.getText().toString();
                 String tenlop = edttenlop.getText().toString();
-                int siso = Integer.parseInt(edtsiso.getText().toString());
+                String siso = edtsiso.getText().toString();
+                if (siso.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "Sĩ số không được để trống", Toast.LENGTH_SHORT).show();
+                }
+
                 ContentValues myvalue= new ContentValues();
                 myvalue.put("malop",malop);
                 myvalue.put("tenlop",tenlop);
