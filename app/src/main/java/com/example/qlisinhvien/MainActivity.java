@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 String msg = "";
                 if (myDatabase.insert("tblop",null,myvalue)==-1)
                 {
-                    msg = "Lỗi nhập";
+                    msg = "Trùng mã lớp";
                 }
                 else
                 {
