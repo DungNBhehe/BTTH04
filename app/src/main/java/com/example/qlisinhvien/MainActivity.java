@@ -2,6 +2,7 @@ package com.example.qlisinhvien;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,8 +116,20 @@ public class MainActivity extends AppCompatActivity {
         });
         BtnDulieu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
+                myList.clear();
+                Cursor c = myDatabase.query("tblop",null,null,null,null,null,null);
+                c.moveToNext();
+                String data="";
+                while (c.isAfterLast() == false)
+                {
+                    data = c.getString(0)+"-"+c.getString(1)+"-"+c.getString(2);
+                    c.moveToNext();
+                    myList.add(data);
+                }
+                c.close();
+                myAdapter.notifyDataSetChanged();
             }
         });
     }
