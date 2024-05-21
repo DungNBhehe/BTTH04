@@ -111,7 +111,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="Button" />
+            android:text="Nhập" />
 
         <Button
             android:id="@+id/BtnXoa"
@@ -120,7 +120,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="Button" />
+            android:text="Xóa" />
     </LinearLayout>
 
     <LinearLayout
@@ -136,7 +136,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="Button" />
+            android:text="Cập nhật" />
 
         <Button
             android:id="@+id/BtnDulieu"
@@ -145,7 +145,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="Button" />
+            android:text="Dữ liệu" />
     </LinearLayout>
 
     <ListView
