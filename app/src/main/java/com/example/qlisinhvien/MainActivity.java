@@ -80,6 +80,22 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
             }
         });
+        BtnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String malop = edtmalop.getText().toString();
+                int n = myDatabase.delete("tblop","malop = ?",new String[] {malop} );
+                String msg = "";
+                if (n ==0)
+                {
+                    msg = "Không có bản ghi nào xóa";
+                }
+                else {
+                    msg = "Xóa thành công";
+                }
+                Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
