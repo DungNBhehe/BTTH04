@@ -1,6 +1,11 @@
 package com.example.qlisinhvien;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +13,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    EditText edtmalop,edttenlop,edtsiso;
+    Button BtnNhap, BtnXoa, BtnCapnhat, BtnDulieu;
+    ListView lv;
+    ArrayList myList;
+    ArrayAdapter myAdapter;
+    SQLiteDatabase myDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
