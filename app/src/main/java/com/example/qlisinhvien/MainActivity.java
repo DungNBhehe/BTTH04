@@ -1,12 +1,16 @@
 package com.example.qlisinhvien;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,9 +49,39 @@ public class MainActivity extends AppCompatActivity {
         lv.setAdapter(myAdapter);
         //Tạo và mở csdl
         myDatabase = openOrCreateDatabase("qlisinhvien.db",MODE_PRIVATE,null);
-
-
-
+        //Tạo table
+        try
+        {
+                String sql = "CREATE TABLE tblop(malop TEXT primary key , tenlop TEXT, siso INTEGER)";
+                myDatabase.execSQL(sql);
+        }
+        catch (Exception e) {
+            Log.e("Error", "Table đã tồn tại");
+        }
+        BtnNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String malop = edtmalop.getText().toString();
+                String tenlop = edttenlop.getText().toString();
+                int siso = Integer.parseInt(edtsiso.getText().toString());
+                ContentValues myvalue= new ContentValues();
+                myvalue.put("malop",malop);
+                myvalue.put("tenlop",tenlop);
+                myvalue.put("siso",siso);
+                String msg = "";
+                if (myDatabase.insert("tblop",null,myvalue)==-1)
+                {
+                    msg = "Lỗi nhập";
+                }
+                else
+                {
+                    msg= "Nhập thành công";
+                }
+                Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+            }
         });
+
+
+
     }
 }
