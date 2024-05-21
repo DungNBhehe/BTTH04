@@ -84,20 +84,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String malop = edtmalop.getText().toString();
-                int n = myDatabase.delete("tblop","malop = ?",new String[] {malop} );
+                int n = myDatabase.delete("tblop", "malop = ?", new String[]{malop});
+                String msg = "";
+                if (n == 0) {
+                    msg = "Không có bản ghi nào xóa";
+                } else {
+                    msg = "Xóa thành công";
+                }
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+        BtnCapnhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int siso = Integer.parseInt(edtsiso.getText().toString());
+                String malop = edtmalop.getText().toString();
+                ContentValues myvalue = new ContentValues();
+                myvalue.put("siso",siso);
+                int n = myDatabase.update("tblop",myvalue,"malop = ?",new String[] {malop} );
                 String msg = "";
                 if (n ==0)
                 {
-                    msg = "Không có bản ghi nào xóa";
+                    msg = "Không có bản ghi nào cập nhật";
                 }
                 else {
-                    msg = "Xóa thành công";
+                    msg = "Cập nhật thành công";
                 }
                 Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
             }
         });
+        BtnDulieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-
+            }
+        });
     }
 }
