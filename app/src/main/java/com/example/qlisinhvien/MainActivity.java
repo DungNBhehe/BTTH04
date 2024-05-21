@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 Cursor c = myDatabase.query("tblop",null,null,null,null,null,null);
                 c.moveToNext();
                 String data="";
-                while (c.isAfterLast() == false)
+                while (!c.isAfterLast() )
                 {
                     data = c.getString(0)+"-"+c.getString(1)+"-"+c.getString(2);
                     c.moveToNext();
